@@ -14,9 +14,11 @@ function multiplier(x){
 // Accepts an array of numbers and returns a function which returns a random number from this array
 
 function makeRandomFn(arr = []){
+
   if(arr === []){
     return;
   }
+
   let randomIndex;
   return function (){
     randomIndex = Math.floor(Math.random() * arr.length);
@@ -32,11 +34,14 @@ function makeRandomFn(arr = []){
 
 function makeRandomFnOverload(...arr) {
   if (arr == []) {
+
     return;
   }
+
   if (Array.isArray(...arr)) {
     arr = arr[0];
   }
+  
   let randomIndex;
   return function randomizer() {
     randomIndex = Math.floor(Math.random() * arr.length);
