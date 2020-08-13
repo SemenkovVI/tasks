@@ -24,7 +24,7 @@ class Grid {
   }
 
   initTable() {
-    const ObjectTable = {
+    const objectTable = {
       tableName: this.tableName,
       isScrolAvaliable: true,
       background: this.background,
@@ -33,15 +33,15 @@ class Grid {
       rows: []
     };
 
-    for (let i = 1; i <= ObjectTable.rowsNumbers; i++) {
-      ObjectTable.rows.push({
+    for (let i = 1; i <= objectTable.rowsNumbers; i++) {
+      objectTable.rows.push({
         id: Math.floor(Math.random() * 1000),
         value: `row №${i}`,
-        isCheckbox: i == ObjectTable.rowsNumbers ? true : false,
+        isCheckbox: i == objectTable.rowsNumbers ? true : false,
       });
     }
 
-    return ObjectTable;
+    return objectTable;
   }
 }
 
@@ -63,11 +63,11 @@ class UserTable extends Grid {
   }
 
   addRow() {
-    this.tableRow = this.tableRow + 1;
+    ++this.tableRow;
   }
 
   deleteRow() {
-    this.tableRow = this.tableRow - 1;
+    --this.tableRow;
   }
 
   getDynamic() {
@@ -75,8 +75,9 @@ class UserTable extends Grid {
   }
 
   getTableSumOfCell() {
+    if(super.getTableSumOfCell() && this.countOfBlockCell) {
     return super.getTableSumOfCell() - this.countOfBlockCell;
-
+    } else return undefined;
   }
 }
 

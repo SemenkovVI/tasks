@@ -23,7 +23,7 @@ Grid.prototype.getDynamic = function () {
 }
 
 Grid.prototype.initTable = function () {
-  const ObjectTable = {
+  const objectTable = {
     tableName: this.tableName,
     isScrolAvaliable: true,
     background: this.background,
@@ -32,15 +32,15 @@ Grid.prototype.initTable = function () {
     rows: []
   };
 
-  for (let i = 1; i <= ObjectTable.rowsNumbers; i++) {
-    ObjectTable.rows.push({
+  for (let i = 1; i <= objectTable.rowsNumbers; i++) {
+    objectTable.rows.push({
       id: Math.floor(Math.random() * 1000),
       value: `row №${i}`,
-      isCheckbox: i == ObjectTable.rowsNumbers ? true : false,
+      isCheckbox: i == objectTable.rowsNumbers ? true : false,
     });
   }
 
-  return ObjectTable;
+  return objectTable;
 }
 
 
@@ -57,36 +57,31 @@ function UserTable(tableRow, tableColumn, tableName, background, isDynamic, user
 
 UserTable.prototype = Object.create(Grid.prototype);
 
-Grid.prototype.getLogin = function () {
+UserTable.prototype.getLogin = function () {
   return this.login;
 }
 
-Grid.prototype.getPassword = function () {
+UserTable.prototype.getPassword = function () {
   return this.password;
 }
 
-Grid.prototype.addRow = function () {
-  this.tableRow = this.tableRow + 1;
+UserTable.prototype.addRow = function () {
+  ++this.tableRow;
 }
 
-Grid.prototype.deleteRow = function () {
-  this.tableRow = this.tableRow - 1;
+UserTable.prototype.deleteRow = function () {
+  --this.tableRow;
 }
 
-Grid.prototype.getDynamic = function () {
+UserTable.prototype.getDynamic = function () {
   return `The user with ${this.login} login have ${this.isDynamic ? 'dynamic' : 'non dynamic'} table`;
 }
 
-Grid.prototype.getTableSumOfCell = function () {
-  return Grid.prototype.getTableSumOfCell.call(this);
+UserTable.prototype.getTableSumOfCell = function () {
+  if (Grid.prototype.getTableSumOfCell.apply(this) && this.countOfBlockCell) {
+    return Grid.prototype.getTableSumOfCell.call(this) - this.countOfBlockCell;
+  } else return undefined;
 }
-
-const user = new UserTable(5, 4, 'UserTable', 'green', true, 'login123', 'passwordqwe', 3);
-const user1 = new UserTable(5, 4, 'UserTable', 'green', false, 'login123', 'passwordqwe', 3);
-console.log(user);
-let z = user1.setDynamic();
-console.log(user);
-console.log(z);
 
 
 function OrderTable(tableRow, tableColumn, tableName, background, isDynamic, userLogin, userPassword, countOfBlockCell, optionalCell) {
@@ -105,26 +100,26 @@ function OrderTable(tableRow, tableColumn, tableName, background, isDynamic, use
 
 OrderTable.prototype = Object.create(Grid.prototype);
 
-Grid.prototype.colorOfBorder = function () {
-  return `The border color is ${this.borderColor}`
+OrderTable.prototype.colorOfBorder = function () {
+  return `The border color is ${this.borderColor}`;
 }
 
-Grid.prototype.getJustifyContent = function () {
+OrderTable.prototype.getJustifyContent = function () {
   return `The justify content is ${this.justify}`;
 }
 
-Grid.prototype.setColorBlue = function () {
+OrderTable.prototype.setColorBlue = function () {
   this.background = 'blue';
 }
 
-Grid.prototype.setColorYellow = function () {
+OrderTable.prototype.setColorYellow = function () {
   this.background = 'yellow';
 }
 
-Grid.prototype.getTableSumOfCell = function () {
+OrderTable.prototype.getTableSumOfCell = function () {
   return Grid.prototype.getTableSumOfCell() - this.countOfBlockCell + this.optionalCell;
 }
 
-Grid.prototype.getDynamic = function () {
+OrderTable.prototype.getDynamic = function () {
   return this.isDynamic;
 }
