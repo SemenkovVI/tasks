@@ -36,7 +36,7 @@ Grid.prototype.initTable = function () {
     objectTable.rows.push({
       id: Math.floor(Math.random() * 1000),
       value: `row №${i}`,
-      isCheckbox: i == objectTable.rowsNumbers ? true : false,
+      isCheckbox: i == objectTable.rowsNumbers,
     });
   }
 
@@ -78,9 +78,7 @@ UserTable.prototype.getDynamic = function () {
 }
 
 UserTable.prototype.getTableSumOfCell = function () {
-  if (Grid.prototype.getTableSumOfCell.apply(this) && this.countOfBlockCell) {
     return Grid.prototype.getTableSumOfCell.call(this) - this.countOfBlockCell;
-  } else return undefined;
 }
 
 

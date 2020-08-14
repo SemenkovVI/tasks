@@ -37,7 +37,7 @@ class Grid {
       objectTable.rows.push({
         id: Math.floor(Math.random() * 1000),
         value: `row №${i}`,
-        isCheckbox: i == objectTable.rowsNumbers ? true : false,
+        isCheckbox: i == objectTable.rowsNumbers,
       });
     }
 
@@ -75,12 +75,14 @@ class UserTable extends Grid {
   }
 
   getTableSumOfCell() {
-    if(super.getTableSumOfCell() && this.countOfBlockCell) {
     return super.getTableSumOfCell() - this.countOfBlockCell;
-    } else return undefined;
   }
 }
 
+const user = new UserTable(3,4,'User','white',true,'Login','Password',5);
+console.log(user);
+let x = user.getTableSumOfCell();
+console.log(x);
 
 class OrderTable extends Grid {
   constructor(tableRow, tableColumn, tableName, background, isDynamic, userLogin, userPassword, countOfBlockCell, optionalCell) {
