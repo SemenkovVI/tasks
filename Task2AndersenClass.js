@@ -79,10 +79,6 @@ class UserTable extends Grid {
   }
 }
 
-const user = new UserTable(3,4,'User','white',true,'Login','Password',5);
-console.log(user);
-let x = user.getTableSumOfCell();
-console.log(x);
 
 class OrderTable extends Grid {
   constructor(tableRow, tableColumn, tableName, background, isDynamic, userLogin, userPassword, countOfBlockCell, optionalCell) {
