@@ -1,6 +1,6 @@
-const cities = ['Brest', 'Vitebsk', 'Gomel', 'Grodno', 'Minskaya oblast', 'Mogilev', 'Minsk'];
-const idCities = ['629634', '620127', '627907', '627904', '625142', '625073', '625144'];
-const RandNumber = makeRandomFn(new Array(CITIES.length))();
+const citiesName = ['Brest', 'Vitebsk', 'Gomel', 'Grodno', 'Minskaya oblast', 'Mogilev', 'Minsk'];
+const idOfCities = ['629634', '620127', '627907', '627904', '625142', '625073', '625144'];
+const randNumber = makeRandomFn(new Array(citiesName.length))();
 
 class WeatherInCity{
   constructor(city, id){
@@ -31,7 +31,7 @@ class MinskWeather extends WeatherInCity {
 }
 
 class RandomCityWeather extends WeatherInCity {
-  constructor(city = cities[RandNumber], id = idCities[RandNumber]){
+  constructor(city = citiesName[randNumber], id = idOfCities[randNumber]){
     super(city, id);
   }
 }
