@@ -24,7 +24,7 @@ const promise1 = new Promise((resolve) => {
     setTimeout(() => resolve(['Саша', 'Влад', 'Юля', 'Андрей', 'Богдан']), 1000);
   });
 }).then((result) => {
-  if(USER_OBJECT.role === 'admin'){
+  if(USER_OBJECT.role === 'admin') {
     if(OBJECT_OF_ID[USER_OBJECT.id] > result.length) {
       throw new Error('Count of people too much!');
     }
