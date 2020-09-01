@@ -14,7 +14,7 @@ const promise1 = new Promise((resolve) => {
   });
 }).then((result) => {
   USER_OBJECT.role = result;
-  USER_OBJECT.mail = `semenkovvlad@${result}.com`
+  USER_OBJECT.mail = `semenkovvlad@${result}.com`;
   return new Promise((resolve) => {
     setTimeout(() => resolve('1'), 2000);
   });
