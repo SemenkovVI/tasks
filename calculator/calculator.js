@@ -1,3 +1,5 @@
+const BUTTON_OF_CALCULATOR = 'C CE % / 7 8 9 * 4 5 6 - 1 2 3 + ( ) 0 =';
+
 const divContainer = document.createElement('div');
 divContainer.className = 'calculator__container';
 const output = document.createElement('output');
@@ -10,7 +12,7 @@ const divCalculator = document.createElement('div');
 divCalculator.classList.add('keyboard');
 document.querySelector('.calculator__container').appendChild(divCalculator);
 
-'C CE % / 7 8 9 * 4 5 6 - 1 2 3 + ( ) 0 ='.split(' ')
+BUTTON_OF_CALCULATOR.split(' ')
   .map(symbol => {
     divCalculator.insertAdjacentHTML('beforeend', `<button value="${symbol}">${symbol}</button>`)
   });
@@ -22,7 +24,8 @@ divCalculator.addEventListener('click', click => {
 });
 
 document.addEventListener('keydown', e => {
-  if ((e.key).match(/[0-9%\/*\-+\(\)=]|Backspace|Enter/)) calc(e.key);
+  if ((e.key).match(/[0-9%\/*\-+\(\)=]|Backspace|Enter/))
+    calc(e.key);
 });
 
 function calc(value) {
